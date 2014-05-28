@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 cats = Cat.create!([
-  {age: 2, birth_date: "December 2nd", color: "brown", name: "fluffy", sex: "F"},
-  {age: 5, birth_date: "December 12th", color: "orange", name: "bert", sex: "M"},
-  {age: 7, birth_date: "May 8th", color: "white", name: "Sennacy2", sex: "F"},
+  {age: 2, birth_date: "12-23-13", color: "brown", name: "fluffy", sex: "F"},
+  {age: 5, birth_date: "12-03-10", color: "orange", name: "bert", sex: "M"},
+  {age: 7, birth_date: "05-05-09", color: "white", name: "Sennacy2", sex: "F"},
   ])
