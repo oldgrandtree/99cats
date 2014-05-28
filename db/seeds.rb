@@ -14,7 +14,7 @@ cats = Cat.create!([
 )
 
 requests = CatRentalRequest.create!([
-  {cat_id: 1, start_date: "2015-12-23", end_date: "2015-12-25", status: "APPROVED"},
+  {cat_id: 1, start_date: "2015-12-23", end_date: "2015-12-25"},
   {cat_id: 1, start_date: "2015-12-24", end_date: "2015-12-26"},
   {cat_id: 1, start_date: "2016-12-24", end_date: "2016-12-26"},
   {cat_id: 2, start_date: "2015-12-24", end_date: "2015-12-26"},

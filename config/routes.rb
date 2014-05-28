@@ -2,7 +2,12 @@ Cats99::Application.routes.draw do
   resources :cats
   root to: "cats#index"
 
-  resources :cat_rental_requests
+  resources :cat_rental_requests, only: [:new, :create] do
+    member do
+      post 'approve'
+      post 'deny'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
