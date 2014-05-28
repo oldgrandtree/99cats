@@ -1,0 +1,53 @@
+<% unless @cat.errors.blank? %>
+<p><%= @cat.errors.full_messages %></p>
+<% end %>
+
+<form action="<%= @cat.persisted? ? cat_url(@cat) : cats_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% if @cat.persisted? %>
+    <input type='hidden' name='_method' value='put'>
+  <% end %>
+
+  <label>
+    Name
+    <input type="text" value="<%= @cat.name %>" name="cat[name]">
+  </label>
+
+  <br>
+
+  <label>
+    Age
+      <input type="text" value="<%= @cat.age %>" name="cat[age]">
+  </label>
+
+  <br>
+
+  <label>
+    Sex
+      <input type="radio" value="M" name="cat[sex]" <%= "checked" if @cat.sex == "M" %> >Male
+      <input type="radio" value="F" name="cat[sex]" <%= "checked" if @cat.sex == "F" %> >Female
+  </label>
+
+  <br>
+
+  <label>
+    Color
+    <select name="cat[color]">
+      <option value=""></option>
+      <% Cat::COLORS.each do |color| %>
+        <option value="<%= color %>" <%= "selected" if @cat.color == color %>><%= color %></option>
+      <% end %>
+  </label>
+
+  <br>
+
+  <label>
+    Birthday
+      <input type="date" value="<%= @cat.birth_date %>" name="cat[birth_date]">
+  </label>
+
+  <br>
+
+  <button><%= @cat.persisted? ? "Update" : "Create " %> Cat</button>
+
+</form>
