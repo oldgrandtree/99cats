@@ -5,4 +5,6 @@ class Cat < ActiveRecord::Base
   validates :age, numericality: { only_integer: true }
   validates :color, inclusion: { in: COLORS }
   validates :sex, inclusion: { in: ['M', 'F'] }
+
+  has_many :cat_rental_requests, dependent: :destroy
 end

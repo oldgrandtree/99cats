@@ -9,5 +9,14 @@
 cats = Cat.create!([
   {age: 2, birth_date: "2013-12-23", color: "brown", name: "fluffy", sex: "F"},
   {age: 5, birth_date: "2010-12-03", color: "orange", name: "bert", sex: "M"},
-  {age: 7, birth_date: "2009-05-05", color: "white", name: "Sennacy2", sex: "F"},
-  ])
+  {age: 7, birth_date: "2009-05-05", color: "white", name: "Sennacy2", sex: "F"}
+  ]
+)
+
+requests = CatRentalRequest.create!([
+  {cat_id: 1, start_date: "2015-12-23", end_date: "2015-12-25", status: "APPROVED"},
+  {cat_id: 1, start_date: "2015-12-24", end_date: "2015-12-26"},
+  {cat_id: 1, start_date: "2016-12-24", end_date: "2016-12-26"},
+  {cat_id: 2, start_date: "2015-12-24", end_date: "2015-12-26"},
+  ]
+)

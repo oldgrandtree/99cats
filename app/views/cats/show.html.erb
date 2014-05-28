@@ -19,3 +19,14 @@
 
 <br>
 <a href="<%= edit_cat_url(@cat) %>">Edit cat</a>
+
+<br>
+<form action="<%= cat_url(@cat) %>" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="_method" value="delete">
+
+  <button>Delete Cat</button>
+
+</form>
