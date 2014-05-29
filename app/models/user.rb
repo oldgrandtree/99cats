@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
+  has_many :cats
+  has_many :cat_rental_requests
+
   def reset_session_token!
     self.session_token = generate_session_token
     self.save!

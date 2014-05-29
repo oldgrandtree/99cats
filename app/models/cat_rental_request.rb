@@ -1,11 +1,12 @@
 class CatRentalRequest < ActiveRecord::Base
-  validates :cat_id, :start_date, :end_date, presence: true
+  validates :cat_id, :start_date, :end_date, :user_id, presence: true
   validates :status, inclusion: { in: ['PENDING', 'APPROVED', 'DENIED'] }
   validate :not_overlapping
 
   before_validation :set_status
 
   belongs_to :cat
+  belongs_to :user
 
   def approve!
     CatRentalRequest.transaction do
@@ -13,6 +14,7 @@ class CatRentalRequest < ActiveRecord::Base
       self.save!
 
       overlapping_requests.each do |request|
+        next if request.id == self.id
         request.deny!
       end
     end
@@ -54,7 +56,6 @@ class CatRentalRequest < ActiveRecord::Base
 
     CatRentalRequest
       .where(cat_id: cat_id)
-      .where("id != ?", self.id)
       .where(sql_overlap, start_date: start_date, end_date: end_date)
   end
 end

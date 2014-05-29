@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def require_signed_out
     redirect_to root_url unless current_user.nil?
   end
+
+  def require_signed_in
+    redirect_to new_session_url if current_user.nil?
+  end
 end
