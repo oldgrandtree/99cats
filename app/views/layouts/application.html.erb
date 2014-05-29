@@ -10,6 +10,10 @@
 <%= debug params %>
 <hr>
 
+<% if flash[:notices] %>
+<p><%= flash[:notices] %></p>
+<% end %>
+
 <nav>
   <ul>
     <li><a href="<%= cats_url %>">Home</a></li>

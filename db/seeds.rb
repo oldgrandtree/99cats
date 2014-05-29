@@ -20,3 +20,9 @@ requests = CatRentalRequest.create!([
   {cat_id: 2, start_date: "2015-12-24", end_date: "2015-12-26"},
   ]
 )
+
+users = User.create!([
+  {user_name: "levi" , password: "pizzapizza"},
+  {user_name: "josh" , password: "mypassword"},
+  {user_name: "tommy", password: "security"  }
+])
