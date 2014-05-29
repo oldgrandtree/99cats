@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(*session_params.values)
 
     if @user
-      login_user!
+      login_user!(@user)
       redirect_to root_url
     else
       flash[:errors] = "Wrong username or password"
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    current_user.reset_session_token!
+    current_session.destroy
     session[:session_token] = nil
     redirect_to root_url
   end

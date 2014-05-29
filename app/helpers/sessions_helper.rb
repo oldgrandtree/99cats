@@ -1,11 +1,18 @@
 module SessionsHelper
   def current_user
-    User.find_by_session_token(session[:session_token])
+    current_session.try(:user)
   end
 
-  def login_user!
-    @user.reset_session_token!
-    flash[:notices] = "Welcome #{@user.user_name}!"
-    session[:session_token] = @user.session_token
+  def current_session
+    Session.find_by_session_token(session[:session_token])
+  end
+
+  def login_user!(user)
+    new_session = user.sessions.create!(
+      env: request.env["HTTP_USER_AGENT"],
+      location: request.location.city
+    )
+    flash[:notices] = "Welcome #{user.user_name}!"
+    session[:session_token] = new_session.session_token
   end
 end
