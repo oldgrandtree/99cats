@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_signed_out, only: [:create, :new]
+
   def new
     @user = User.new
   end
@@ -6,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notices] = "Welcome #{@user.user_name}!"
+      login_user!
       redirect_to root_url
     else
       render :new
